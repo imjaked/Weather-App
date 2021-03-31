@@ -68,10 +68,8 @@ struct APIMain: Decodable {
 
 struct APIWeather: Decodable {
     let description: String
-    let iconName: String
 
 enum CodingKeys: String, CodingKey {
     case description
-    case iconName = "main"
     }
 }

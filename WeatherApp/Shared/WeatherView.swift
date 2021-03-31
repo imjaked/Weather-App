@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// make some design tweaks 
 struct WeatherView: View {
 
     @ObservedObject var viewModel: WeatherViewModel
@@ -15,7 +14,7 @@ struct WeatherView: View {
     var body: some View {
         VStack(alignment: .center) {
             VStack {
-                Text("Current weather")
+                Text("Current Weather")
                     .font(.callout)
                     .foregroundColor(Color.gray)
                     .padding(5)
@@ -24,17 +23,14 @@ struct WeatherView: View {
                     .fontWeight(.bold)
             }.padding(.top).frame(maxHeight: .infinity, alignment: .top)
             VStack {
-                Text(viewModel.weatherIcon)
-                .font(.largeTitle)
-                .padding()
                 Text(viewModel.temperature)
-                .font(.system(size:96))
-                .bold()
+                    .font(.system(size:148))
+                    .bold()
+                    .padding(5)
                 Text(viewModel.weatherDescription)
                     .font(.title2)
-                    .fontWeight(.regular)
+                    .fontWeight(.bold)
                     .foregroundColor(Color.gray)
-                    .padding()
             }
             VStack {
               //centering

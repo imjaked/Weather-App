@@ -7,31 +7,10 @@
 
 import Foundation
 
-private let defaultIcon = ""
-
-private let iconMap = [
-    "Thunderstorm" : "⛈",
-    "Drizzle" : "🌦",
-    "Rain" : "🌧",
-    "Snow" : "🌨",
-    "Mist" : "🌨",
-    "Smoke" : "🌨",
-    "Haze" : "🌨",
-    "Dust" : "🌨",
-    "Fog" : "🌫",
-    "Sand" : "🌨",
-    "Ash" : "🌨",
-    "Squall" : "🌨",
-    "Tornado" : "🌨",
-    "Clear" : "☀️",
-    "Clouds" : "🌥",
-]
-
 public class WeatherViewModel: ObservableObject {
-    @Published var cityName: String = "Checking weather..."
+    @Published var cityName: String = "Checking Weather..."
     @Published var temperature: String = ""
     @Published var weatherDescription: String = ""
-    @Published var weatherIcon: String = defaultIcon
 
 public let weatherService: WeatherService
 
@@ -42,10 +21,9 @@ public init(weatherService: WeatherService) {
 public func refresh() {
     weatherService.loadWeatherData { weather in
         DispatchQueue.main.async {
-            self.cityName = weather.city
+            self.cityName = weather.city.capitalized
             self.temperature = "\(weather.temperature)°"
             self.weatherDescription = weather.description.capitalized
-            self.weatherIcon = iconMap[weather.iconName] ?? defaultIcon
             }
         }
     }
