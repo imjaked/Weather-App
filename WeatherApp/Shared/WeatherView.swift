@@ -18,7 +18,7 @@ struct WeatherView: View {
                 Text("Current weather")
                     .font(.callout)
                     .foregroundColor(Color.gray)
-                    .padding()
+                    .padding(5)
                 Text(viewModel.cityName)
                     .font(.title2)
                     .fontWeight(.bold)
