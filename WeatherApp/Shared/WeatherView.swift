@@ -13,18 +13,33 @@ struct WeatherView: View {
     @ObservedObject var viewModel: WeatherViewModel
 
     var body: some View {
-        VStack {
-            Text(viewModel.cityName)
-            .font(.largeTitle)
-            .padding()
-            Text(viewModel.temperature)
-            .font(.system(size:70))
-            .bold()
-            Text(viewModel.weatherIcon)
-            .font(.largeTitle)
-            .padding()
-            Text(viewModel.weatherDescription)
-        }   .onAppear(perform: viewModel.refresh)
+        VStack(alignment: .center) {
+            VStack {
+                Text("Current weather")
+                    .font(.callout)
+                    .foregroundColor(Color.gray)
+                    .padding()
+                Text(viewModel.cityName)
+                    .font(.title2)
+                    .fontWeight(.bold)
+            }.padding(.top).frame(maxHeight: .infinity, alignment: .top)
+            VStack {
+                Text(viewModel.weatherIcon)
+                .font(.largeTitle)
+                .padding()
+                Text(viewModel.temperature)
+                .font(.system(size:96))
+                .bold()
+                Text(viewModel.weatherDescription)
+                    .font(.title2)
+                    .fontWeight(.regular)
+                    .foregroundColor(Color.gray)
+                    .padding()
+            }
+            VStack {
+              //centering
+            }.frame(maxHeight: .infinity, alignment: .bottom)
+        }.onAppear(perform:viewModel.refresh)
         }
     }
 
